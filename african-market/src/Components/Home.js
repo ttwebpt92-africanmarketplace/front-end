@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import styled from "styled-components";
 
@@ -91,6 +92,14 @@ function Home() {
       <SignUp>Sign Up Today</SignUp>
     </div>
   );
+=======
+import React from 'react';
+
+const Home = () => {
+  return (
+    <div>Home</div>
+  )
+>>>>>>> 7ecad3ec8dab91a100774a6b1c41e10b5b7aff4c
 }
 
 export default Home;
