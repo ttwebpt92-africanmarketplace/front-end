@@ -12,9 +12,9 @@ function App() {
       African Market
     </div>
     <Router>
-      <PrivateRoute exact path='/dashboard' component={Dashboard} />
-      <Route path='/home' component={Home} />
+      <Route  exact path='/' component={Home} />
       <Route path='/login' component={Login} />
+      <PrivateRoute exact path='/dashboard' component={Dashboard} />
     </Router>
     </div>
 
