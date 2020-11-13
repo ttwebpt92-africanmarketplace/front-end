@@ -1,8 +1,10 @@
 import React from 'react'
 import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
 
+
 const SignForm = () => {
 	return (
+		<>
 		<Form>
 			<FormGroup>
 				<Label for="userName">Username</Label>
@@ -64,6 +66,7 @@ const SignForm = () => {
       		</FormGroup>
 				<Button>Submit</Button>
 		</Form>
+		</>
 	)
 }
 
