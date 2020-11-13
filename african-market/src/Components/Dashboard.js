@@ -1,20 +1,23 @@
-<<<<<<< HEAD
 //Visible to users only after they are logged in.
 import React from "react";
+import ProductCard from "./ProductCard";
+import styled from "styled-components";
 
-function Dashboard() {
-    return (
-        <>
-        </>
-    )
-=======
-import React from 'react';
+const DashboardDiv = styled.div`
+  background-color: gray;
+`;
 
-const Dashboard = () => {
+function Dashboard(props) {
+  const { username } = props;
+  //header and footer of the website will stay the same.
   return (
-    <div>Dashboard</div>
-  )
->>>>>>> 7ecad3ec8dab91a100774a6b1c41e10b5b7aff4c
+    <DashboardDiv>
+      <p>Welcome to your Dashboard {username}!</p>
+      {/* NewProductForm Component */}
+      {/* We'll need to .map the array of objects into the ProductCard */}
+      {ProductCard}
+    </DashboardDiv>
+  );
 }
 
 export default Dashboard;
