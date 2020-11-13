@@ -4,7 +4,6 @@ import PrivateRoute from './PrivateRoute';
 import Home from './Home';
 import Login from './Login';
 import Dashboard from './Dashboard';
-import SignForm from './SignForm'
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
     </Router>
     <div>
       {/* <PublicFooter /> */}
-      <SignForm />
+      
     </div>
     </div>
 
