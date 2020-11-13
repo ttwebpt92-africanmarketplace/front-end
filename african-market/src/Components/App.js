@@ -4,18 +4,23 @@ import PrivateRoute from './PrivateRoute';
 import Home from './Home';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import SignForm from './SignForm'
 
 function App() {
   return (
     <div>
     <div>
-      African Market
+      {/* <PublicHeader /> */}
     </div>
     <Router>
       <Route  exact path='/' component={Home} />
       <Route path='/login' component={Login} />
       <PrivateRoute exact path='/dashboard' component={Dashboard} />
     </Router>
+    <div>
+      {/* <PublicFooter /> */}
+      <SignForm />
+    </div>
     </div>
 
   

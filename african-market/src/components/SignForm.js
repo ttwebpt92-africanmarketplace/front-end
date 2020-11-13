@@ -2,6 +2,22 @@ import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
 import PublicHeader from './PublicHeader'
 import PublicFooter from './PublicFooter'
+import styled from 'styled-components'
+
+const PageStyle = styled.div`
+	width: 40%;
+	max-width:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	text-align:center;
+	font-weight:bold;
+	background-color: #c6c6c6;
+	padding:3.68%;
+	margin:0 auto;
+`
+
+
 
 
 const SignForm = () => {
@@ -13,12 +29,10 @@ const SignForm = () => {
 		firstname: '',
 		lastname: '',
 		address: '',
-		role: true
+		role: false
 	}
 
 	const [user, setUser] = useState(userObj);
-
-
 
 	return (
 		<>
@@ -108,7 +122,9 @@ const SignFormPage = () => {
 	return (
 		<>
 		<PublicHeader />
-		<SignForm />
+		<PageStyle>
+			<SignForm />
+		</PageStyle>
 		<PublicFooter />
 		</>
 	)

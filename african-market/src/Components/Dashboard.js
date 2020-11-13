@@ -1,11 +1,9 @@
-//Visible to users only after they are logged in.
-import React from "react";
+import React from 'react';
 
-function Dashboard() {
-    return (
-        <>
-        </>
-    )
+const Dashboard = () => {
+  return (
+    <div>Dashboard</div>
+  )
 }
 
 export default Dashboard;
