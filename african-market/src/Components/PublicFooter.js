@@ -11,7 +11,7 @@ const FooterDiv = styled.div`
 const TeammateIcon = styled.img`
 border: solid 1.5px white;
 width: 2rem;
-height 2rem;
+height: 2rem;
 border-radius: 50%;
 `;
 
