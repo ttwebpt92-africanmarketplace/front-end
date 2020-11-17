@@ -12,13 +12,14 @@ function Dashboard() {
 
 const username = "User";
 
-const [itemData, setItemData] = useState();
+const [itemData, setItemData] = useState([]);
 
 const getData = () => {
   axiosWithAuth()
   .get('/api/items')
   .then((res) => {
-    console.log('Dashboard res: ', res)
+    console.log('Dashboard res: ', res.data);
+    setItemData(res.data)
   })
   .catch((err) => {
     console.log(err);
