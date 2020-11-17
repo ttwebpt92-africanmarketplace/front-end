@@ -1,9 +1,20 @@
-import React from 'react';
+//Visible to users only after they are logged in.
+import React from "react";
+import ProductCard from "./ProductCard";
+import styled from "styled-components";
 
-const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
+const DashboardDiv = styled.div`
+  background-color: gray;
+`;
+
+import React from 'react';
+    <DashboardDiv>
+      <p>Welcome to your Dashboard {username}!</p>
+      {/* NewProductForm Component */}
+      {/* We'll need to .map the array of objects into the ProductCard */}
+      {ProductCard}
+    </DashboardDiv>
+  );
 }
 
 export default Dashboard;
