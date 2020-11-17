@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
-import PublicHeader from './PublicHeader'
-import PublicFooter from './PublicFooter'
 import styled from 'styled-components'
 
 const PageStyle = styled.div`
@@ -22,7 +20,7 @@ const PageStyle = styled.div`
 
 const SignForm = () => {
 
-	const userObj = {
+	const [user, setUser] = useState({
 		username: '',
 		password: '',
 		email: '',
@@ -30,84 +28,98 @@ const SignForm = () => {
 		lastname: '',
 		address: '',
 		role: false
-	}
+	});
 
-	const [user, setUser] = useState(userObj);
+	const onChange = (e) => {
+		console.log('user e.target: ', e.target.name,e.target.value);
+		setUser({
+	  ...user,
+	[e.target.name]: e.target.value,
+		  
+		})
+	  };
 
 	return (
 		<>
 		<Form>
 			<FormGroup>
-				<Label for="userName">Username</Label>
+				<Label for="username">Username</Label>
 					<Input
 					type="text"
-					name="usrName"
-					id="userName"
+					name="username"
+					id="username"
 					placeholder="please enter your username"
 					value={user.username}
+					onChange={onChange}
 					required
 					/>
 			</FormGroup>
 			<FormGroup>
-				<Label for="userPassword">Password</Label>
+				<Label for="password">Password</Label>
 					<Input
 					type="password"
-					name="email"
-					id="userPassword"
+					name="password"
+					id="password"
 					placeholder="please enter your password"
 					value={user.password}
+					onChange={onChange}
 					required
 					/>
 			</FormGroup>
 			<FormGroup>
-				<Label for="userEmail">Email</Label>
+				<Label for="email">Email</Label>
 					<Input
 					type="email"
 					name="email"
-					id="userEmail"
+					id="email"
 					placeholder="please enter your email"
 					value={user.email}
+					onChange={onChange}
 					required
 					/>
 			</FormGroup>
 			<FormGroup>
-				<Label for="firstName">First Name</Label>
+				<Label for="firstname">First Name</Label>
 					<Input
 					type="text"
-					name="first_name"
-					id="firstName"
+					name="firstname"
+					id="firstname"
 					placeholder="please enter your First name"
 					value={user.firstname}
+					onChange={onChange}
 					/>
 			</FormGroup>
 			<FormGroup>
-				<Label for="lastName">Last Name</Label>
+				<Label for="lastname">Last Name</Label>
 					<Input
 					type="text"
-					name="last_name"
-					id="lastName"
+					name="lastname"
+					id="lastname"
 					placeholder="please enter your Last Name"
 					value={user.lastname}
+					onChange={onChange}
 					/>
 			</FormGroup>
 			<FormGroup>
 				<Label for="address">Address</Label>
 					<Input
 					type="text"
-					name="user_address"
+					name="address"
 					id="address"
 					placeholder="please enter your address"
 					value={user.address}
+					onChange={onChange}
 					/>
 			</FormGroup>
 			<FormGroup check>
 				<Input
 				type="checkbox"
 				name="check"
-				id="exampleCheck"
+				id="check"
 				value={user.role}
+				onChange={onChange}
 				/>
-        		<Label for="exampleCheck" check>
+        		<Label for="check" checked>
 				Check this box if you are the buyer
 				</Label>
       		</FormGroup>
@@ -121,11 +133,9 @@ const SignForm = () => {
 const SignFormPage = () => {
 	return (
 		<>
-		<PublicHeader />
 		<PageStyle>
 			<SignForm />
 		</PageStyle>
-		<PublicFooter />
 		</>
 	)
 }
