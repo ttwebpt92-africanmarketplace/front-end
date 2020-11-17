@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
 import styled from 'styled-components'
+import axios from "axios"
+
 
 const PageStyle = styled.div`
 	width: 40%;
@@ -27,11 +29,11 @@ const SignForm = () => {
 		firstname: '',
 		lastname: '',
 		address: '',
-		role: false
+		role: true
 	});
 
 	const onChange = (e) => {
-		console.log('user e.target: ', e.target.name,e.target.value);
+		//console.log('user e.target: ', e.target.name,e.target.value);
 		setUser({
 	  ...user,
 	[e.target.name]: e.target.value,
@@ -39,9 +41,23 @@ const SignForm = () => {
 		})
 	  };
 
+	  const onSubmit = async (e) => {
+		e.preventDefault();
+		console.log(user);
+		axios
+		.post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/register', user)
+		.then((res) => {
+		  console.log("post request: ", res);
+	
+		})
+		.catch((error) => {
+		  console.log("something went wrong: ", error);
+		})
+	  };
+
 	return (
 		<>
-		<Form>
+		<Form onSubmit={onSubmit}>
 			<FormGroup>
 				<Label for="username">Username</Label>
 					<Input
