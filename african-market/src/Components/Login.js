@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+
 import {
   Button,
   Form,
@@ -7,41 +9,53 @@ import {
   Input,
   FormFeedback,
 } from "reactstrap";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+
 function Login() {
-  const initialState = {
-    credentials: {
-      username: "",
-      password: "",
-    },
-  };
-  const [loginData, setLoginData] = useState(initialState);
+  // const initialState = {
+  //     username: '',
+  //     password: ''
+  // }
+
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: "",
+  });
+
   const onChange = (e) => {
-    console.log("login e.target: ", e.target.name);
+    // console.log('login e.target: ', e.target.name);
     setLoginData({
-      credentials: {
-        ...loginData.credentials,
-        [e.target.name]: e.target.value,
-      },
+      ...loginData,
+      [e.target.name]: e.target.value,
     });
   };
-  const onSubmit = (e) => {
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("submitted");
-    axiosWithAuth()
-      .post("/api/login", loginData)
+    console.log(loginData);
+    axios
+      .post(
+        "https://african-marketplace-ttwebpt-92.herokuapp.com/api/login",
+        loginData
+      )
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("token", res.data.token);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
-    <Form onChange={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <FormGroup>
         <Label for="username">Username</Label>
-        <Input id="username" name="username" onChange={onChange} />
+        <Input
+          type="text"
+          id="username"
+          name="username"
+          onChange={onChange}
+          value={loginData.username}
+        />
         <FormFeedback invalid>
           We do not have record of this email address on file.
         </FormFeedback>
@@ -53,6 +67,7 @@ function Login() {
           id="password"
           name="password"
           onChange={onChange}
+          value={loginData.password}
         />
         <FormFeedback invalid>
           This password does not match what is on file.
@@ -62,4 +77,5 @@ function Login() {
     </Form>
   );
 }
+
 export default Login;
