@@ -7,10 +7,7 @@ const DashboardDiv = styled.div`
   background-color: gray;
 `;
 
-function Dashboard(props) {
-  const { username } = props;
-  //header and footer of the website will stay the same.
-  return (
+import React from 'react';
     <DashboardDiv>
       <p>Welcome to your Dashboard {username}!</p>
       {/* NewProductForm Component */}

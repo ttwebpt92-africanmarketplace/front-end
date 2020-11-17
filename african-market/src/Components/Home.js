@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SignForm from './SignForm'
 
 const TopImg = styled.div`
   background-image: url("https://images.unsplash.com/photo-1591465001581-2c57a07a7a30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
