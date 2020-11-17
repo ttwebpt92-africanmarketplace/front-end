@@ -6,8 +6,8 @@ import styled from "styled-components";
 const DashboardDiv = styled.div`
   background-color: gray;
 `;
-
-import React from 'react';
+function Dashboard() {
+  return (
     <DashboardDiv>
       <p>Welcome to your Dashboard {username}!</p>
       {/* NewProductForm Component */}
