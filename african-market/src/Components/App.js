@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard";
 import PublicHeader from "./PublicHeader";
 import PublicFooter from "./PublicFooter";
 import SignForm from './SignForm'
+import AddProduct from "./AddProduct"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignForm} />
+        <Route path="/addproduct" component={AddProduct}/>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
       </Router>
       <PublicFooter />

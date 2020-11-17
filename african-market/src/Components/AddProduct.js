@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
-import PublicHeader from './PublicHeader'
-import PublicFooter from './PublicFooter'
 import styled from 'styled-components'
 
-const AddDiv = styled.div`
+const AddContainer = styled.div`
 width: 40%;
 display:flex;
 flex-direction:column;
@@ -12,7 +10,7 @@ align-items:center;
 text-align:center;
 font-weight:bold;
 background-color: #c6c6c6;
-padding:9.3%;
+padding:10.4%;
 margin:0 auto;
 * {
 	width:100%;
@@ -21,48 +19,59 @@ margin:0 auto;
 
 const AddComp = () => {
 
-	const newItemObj = {
+
+	const [newItem, setNewItem] = useState({
 		title: '',
-		price: 0,
+		price: '',
 		description: ''
-	}
+	});
 
-	const [newItem, setNewItem] = useState(newItemObj);
 
+	const onChange = (e) => {
+		console.log('user e.target: ', e.target.name,e.target.value);
+		setNewItem({
+	  ...newItem,
+	[e.target.name]: e.target.value,
+		  
+		})
+	  };
 
 	return (
 		<>
 		<Form>
 			<FormGroup>
-				<Label for="itemTitle">Title</Label>
+				<Label for="title">Title</Label>
 					<Input
 					type="text"
-					name="item_title"
-					id="itemTitle"
+					name="title"
+					id="title"
 					placeholder="please enter product title"
 					value={newItem.title}
+					onChange={onChange}
 					required
 					/>
 			</FormGroup>
 			<FormGroup>
-				<Label for="itemPrice">Price $</Label>
+				<Label for="price">Price $</Label>
 					<Input
 					type="number"
-					name="item_price"
-					id="itemPrice"
+					name="price"
+					id="price"
 					placeholder="price"
 					value={newItem.price}
+					onChange={onChange}
 					required
 					/>
 			</FormGroup>
 			<FormGroup>
-      		 	<Label for="itemDescription">Description</Label>
+      		 	<Label for="description">Description</Label>
 					<Input
 					type="textarea"
-					name="item_description"
-					id="itemDescription"
-					placeholder='tell about this item'
+					name="description"
+					id="description"
+					placeholder='tell us more about this item'
 					value={newItem.description}
+					onChange={onChange}
 					required
 					/>
       		</FormGroup>
@@ -75,11 +84,9 @@ const AddComp = () => {
 const AddCompPage = () => {
 	return (
 		<>
-		<PublicHeader />
-		<AddDiv>
+		<AddContainer>
 			<AddComp/>
-		</AddDiv>
-		<PublicFooter />
+		</AddContainer>
 		</>
 	)
 
