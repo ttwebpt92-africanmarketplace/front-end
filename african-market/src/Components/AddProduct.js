@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
+import { Form, FormGroup, Label, Input, Button, CustomInput } from 'reactstrap'
 import styled from 'styled-components'
 
 const AddContainer = styled.div`
@@ -23,7 +23,8 @@ const AddComp = () => {
 	const [newItem, setNewItem] = useState({
 		title: '',
 		price: '',
-		description: ''
+		description: '',
+		categoryId: ''
 	});
 
 
@@ -51,6 +52,24 @@ const AddComp = () => {
 					required
 					/>
 			</FormGroup>
+			 <FormGroup>
+        		<Label for="categoryId">Select Category of item</Label>
+					<CustomInput
+					type="select"
+					id="categoryId"
+					name="categoryId"
+					value={newItem.categoryId}
+					onChange={onChange}>
+        			<option value="">Select Category</option>
+         			<option value="1">fruit</option>
+         		 	<option value="2">vegetable</option>
+         		 	<option value="3">dairy</option>
+         		 	<option value="4">meat</option>
+					<option value="5">seasoning</option>
+					<option value="6">beverage</option>
+         		 	<option value="7">condiment</option>
+        </CustomInput>
+      </FormGroup>
 			<FormGroup>
 				<Label for="price">Price $</Label>
 					<Input
