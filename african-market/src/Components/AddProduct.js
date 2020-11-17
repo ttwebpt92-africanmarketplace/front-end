@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input, Button, CustomInput } from 'reactstrap'
 import styled from 'styled-components'
+import axios from "axios"
 
 const AddContainer = styled.div`
 width: 40%;
@@ -37,9 +38,28 @@ const AddComp = () => {
 		})
 	  };
 
+	  const onSubmit = async (e) => {
+		e.preventDefault();
+		console.log(newItem);
+		axios
+		.post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/items', newItem)
+		.then((res) => {
+		  console.log("post request: ", res);
+		  setNewItem({
+			title: '',
+			price: '',
+			description: '',
+			categoryId: ''
+		})
+		})
+		.catch((error) => {
+		  console.log("cannot add item: ", error);
+		})
+	  };
+
 	return (
 		<>
-		<Form>
+		<Form onSubmit={onSubmit}>
 			<FormGroup>
 				<Label for="title">Title</Label>
 					<Input
@@ -59,7 +79,8 @@ const AddComp = () => {
 					id="categoryId"
 					name="categoryId"
 					value={newItem.categoryId}
-					onChange={onChange}>
+					onChange={onChange}
+					required>
         			<option value="">Select Category</option>
          			<option value="1">fruit</option>
          		 	<option value="2">vegetable</option>
@@ -94,7 +115,7 @@ const AddComp = () => {
 					required
 					/>
       		</FormGroup>
-				<Button onClick ={console.log(newItem)}>Submit</Button>
+				<Button>Submit</Button>
 		</Form>
 		</>
 	)

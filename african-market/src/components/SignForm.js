@@ -47,8 +47,7 @@ const SignForm = () => {
 		axios
 		.post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/register', user)
 		.then((res) => {
-		  console.log("post request: ", res);
-	
+		  console.log("post request: ",res);
 		})
 		.catch((error) => {
 		  console.log("something went wrong: ", error);
