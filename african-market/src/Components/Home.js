@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SignForm from './SignForm'
+import { Link } from "react-router-dom";
 
 const TopImg = styled.div`
   background-image: url("https://images.unsplash.com/photo-1591465001581-2c57a07a7a30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
@@ -39,7 +39,7 @@ function Home() {
     <div>
       <TopImg aria-label="bag of spices">
         <H2>Compare your prices to others in your area.</H2>
-        <SignUp>Sign Up</SignUp>
+        <SignUp><Link to='/signup'>Sign Up</Link></SignUp>
       </TopImg>
       <InfoDiv>
         <InfoCard>
@@ -89,7 +89,7 @@ function Home() {
           </p>
         </InfoCard>
       </InfoDiv>
-      <SignUp>Sign Up Today</SignUp>
+      <SignUp><Link to='/signup'>Sign Up Today</Link></SignUp>
     </div>
   );
 }
