@@ -37,14 +37,14 @@ function Dashboard() {
     getData();
   }, []);
   return (
+    <ItemContext.Provider value={itemData}>
     <DashboardDiv>
-      <p>Welcome to your Dashboard!</p>
-      <AddProduct />
-      <ProductListings>
-        {/* We'll need to .map the array of objects into the ProductCard */}
-        {ProductCard}
-      </ProductListings>
+      <p>Welcome to your Dashboard {username}!</p>
+      {/* NewProductForm Component */}
+      {/* We'll need to .map the array of objects into the ProductCard */}
+      <ProductCard />
     </DashboardDiv>
+  </ItemContext.Provider>
 
   );
 }
