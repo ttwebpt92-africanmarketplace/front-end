@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const HeaderBar = styled.div`
   background-color: #393d3f;
@@ -27,19 +27,21 @@ const LinkItem = styled.li`
 `;
 function PublicHeader() {
   return (
-    <HeaderBar>
-      <SiteTitle>African Marketplace</SiteTitle>
-      <nav>
-        <Nav>
-          <LinkItem>
-            <Link to="/">Home</Link>
-          </LinkItem>
-          <LinkItem>
-            <Link to="/login">Login</Link>
-          </LinkItem>
-        </Nav>
-      </nav>
-    </HeaderBar>
+    <Router>
+      <HeaderBar>
+        <SiteTitle>African Marketplace</SiteTitle>
+        <nav>
+          <Nav>
+            <LinkItem>
+              <Link to="/">Home</Link>
+            </LinkItem>
+            <LinkItem>
+              <Link to="/login">Login</Link>
+            </LinkItem>
+          </Nav>
+        </nav>
+      </HeaderBar>
+    </Router>
   );
 }
 
