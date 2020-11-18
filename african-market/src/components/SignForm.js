@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
 import styled from 'styled-components'
 import axios from "axios"
+import { useHistory } from 'react-router-dom';
 
 
 const PageStyle = styled.div`
@@ -32,6 +33,8 @@ const SignForm = () => {
 		role: true
 	});
 
+	const history = useHistory();
+
 	const onChange = (e) => {
 		//console.log('user e.target: ', e.target.name,e.target.value);
 		setUser({
@@ -48,6 +51,7 @@ const SignForm = () => {
 		.post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/register', user)
 		.then((res) => {
 		  console.log("post request: ",res);
+		  history.push('/login');
 		})
 		.catch((error) => {
 		  console.log("something went wrong: ", error);
