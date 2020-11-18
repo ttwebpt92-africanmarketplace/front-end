@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
-import PublicHeader from './PublicHeader'
-import PublicFooter from './PublicFooter'
+import { Form, FormGroup, Label, Input, Button, CustomInput } from 'reactstrap'
 import styled from 'styled-components'
+import axios from "axios"
 
-const AddDiv = styled.div`
+const AddContainer = styled.div`
 width: 40%;
 display:flex;
 flex-direction:column;
@@ -12,7 +11,7 @@ align-items:center;
 text-align:center;
 font-weight:bold;
 background-color: #c6c6c6;
-padding:9.3%;
+padding:10.4%;
 margin:0 auto;
 * {
 	width:100%;
@@ -21,52 +20,102 @@ margin:0 auto;
 
 const AddComp = () => {
 
-	const newItemObj = {
+
+	const [newItem, setNewItem] = useState({
 		title: '',
-		price: 0,
-		description: ''
-	}
+		price: '',
+		description: '',
+		categoryId: ''
+	});
 
-	const [newItem, setNewItem] = useState(newItemObj);
 
+	const onChange = (e) => {
+		//console.log('user e.target: ', e.target.name,e.target.value);
+		setNewItem({
+	  ...newItem,
+	[e.target.name]: e.target.value,
+		  
+		})
+	  };
+
+	  const onSubmit = async (e) => {
+		e.preventDefault();
+		console.log(newItem);
+		axios
+		.post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/items', newItem)
+		.then((res) => {
+		  console.log("post request: ", res);
+		  setNewItem({
+			title: '',
+			price: '',
+			description: '',
+			categoryId: ''
+		})
+		})
+		.catch((error) => {
+		  console.log("cannot add item: ", error);
+		})
+	  };
 
 	return (
 		<>
-		<Form>
+		<Form onSubmit={onSubmit}>
 			<FormGroup>
-				<Label for="itemTitle">Title</Label>
+				<Label for="title">Title</Label>
 					<Input
 					type="text"
-					name="item_title"
-					id="itemTitle"
+					name="title"
+					id="title"
 					placeholder="please enter product title"
 					value={newItem.title}
+					onChange={onChange}
 					required
 					/>
 			</FormGroup>
+			 <FormGroup>
+        		<Label for="categoryId">Select Category of item</Label>
+					<CustomInput
+					type="select"
+					id="categoryId"
+					name="categoryId"
+					value={newItem.categoryId}
+					onChange={onChange}
+					required>
+        			<option value="">Select Category</option>
+         			<option value="1">fruit</option>
+         		 	<option value="2">vegetable</option>
+         		 	<option value="3">dairy</option>
+         		 	<option value="4">meat</option>
+					<option value="5">seasoning</option>
+					<option value="6">beverage</option>
+         		 	<option value="7">condiment</option>
+        </CustomInput>
+      </FormGroup>
 			<FormGroup>
-				<Label for="itemPrice">Price $</Label>
+				<Label for="price">Price $</Label>
 					<Input
 					type="number"
-					name="item_price"
-					id="itemPrice"
+					name="price"
+					id="price"
 					placeholder="price"
 					value={newItem.price}
+					onChange={onChange}
 					required
 					/>
 			</FormGroup>
 			<FormGroup>
-      		 	<Label for="itemDescription">Description</Label>
+      		 	<Label for="description">Description</Label>
 					<Input
 					type="textarea"
-					name="item_description"
-					id="itemDescription"
-					placeholder='tell about this item'
+					name="description"
+					id="description"
+					placeholder='tell us more about this item'
 					value={newItem.description}
+					onChange={onChange}
 					required
 					/>
       		</FormGroup>
-				<Button onClick ={console.log(newItem)}>Submit</Button>
+				<Button>Submit</Button>
 		</Form>
 		</>
 	)
@@ -75,11 +124,9 @@ const AddComp = () => {
 const AddCompPage = () => {
 	return (
 		<>
-		<PublicHeader />
-		<AddDiv>
+		<AddContainer>
 			<AddComp/>
-		</AddDiv>
-		<PublicFooter />
+		</AddContainer>
 		</>
 	)
 
