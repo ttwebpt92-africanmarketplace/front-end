@@ -117,7 +117,7 @@ const AddComp = () => {
 					/>
       		</FormGroup>
 				<Button primary type='submit'>Add product</Button>
-				<Button secondary><Link to='/'>Back</Link></Button>
+				<Button secondary> <Link to='/'>Back</Link> </Button>
 		</Form>
 		</>
 	)
