@@ -30,7 +30,7 @@ const AddComp = () => {
 
 
 	const onChange = (e) => {
-		console.log('user e.target: ', e.target.name,e.target.value);
+		//console.log('user e.target: ', e.target.name,e.target.value);
 		setNewItem({
 	  ...newItem,
 	[e.target.name]: e.target.value,
