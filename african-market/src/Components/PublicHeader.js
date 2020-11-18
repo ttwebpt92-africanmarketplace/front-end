@@ -7,8 +7,8 @@ const HeaderBar = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
+  align-content: center;
+  padding: 1rem 1rem 0;
 `;
 const SiteTitle = styled.h1`
   color: white;
@@ -23,20 +23,23 @@ const LinkItem = styled.li`
   color: white;
   cursor: pointer;
   weight: 400;
-  padding: 0 1rem;
+  padding: 1rem;
+  &:hover {
+    color: white;
+  }
 `;
 function PublicHeader() {
   return (
-    <Router>
+    <Router forceRefresh={true}>
       <HeaderBar>
         <SiteTitle>African Marketplace</SiteTitle>
         <nav>
           <Nav>
-            <LinkItem>
-              <Link to="/">Home</Link>
+            <LinkItem as={Link} to="/">
+              Home
             </LinkItem>
-            <LinkItem>
-              <Link to="/login">Login</Link>
+            <LinkItem as={Link} to="/login" class="headerLink">
+              Login
             </LinkItem>
           </Nav>
         </nav>
