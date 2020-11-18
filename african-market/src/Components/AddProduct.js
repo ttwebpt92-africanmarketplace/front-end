@@ -116,8 +116,8 @@ const AddComp = () => {
 					required
 					/>
       		</FormGroup>
-				<Button primary type='submit'>Add product</Button>
-				<Button secondary> <Link to='/'>Back</Link> </Button>
+				<Button size="lg" primary type='submit'>Add product</Button>
+				<Button size="sm" secondary><Link to='/'>Back</Link> </Button>
 		</Form>
 		</>
 	)
