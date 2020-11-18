@@ -3,12 +3,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import ItemContext from "../Contexts/ItemContext";
-
 import ProductCard from "./ProductCard";
 import styled from "styled-components";
+import AddProduct from "./AddProduct";
 
 const DashboardDiv = styled.div`
   background-color: gray;
+`;
+const ProductListings = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
 `;
 
 function Dashboard() {
@@ -31,16 +36,16 @@ function Dashboard() {
   useEffect(() => {
     getData();
   }, []);
-
   return (
-    <ItemContext.Provider value={itemData}>
-      <DashboardDiv>
-        <p>Welcome to your Dashboard {username}!</p>
-        {/* NewProductForm Component */}
+    <DashboardDiv>
+      <p>Welcome to your Dashboard!</p>
+      <AddProduct />
+      <ProductListings>
         {/* We'll need to .map the array of objects into the ProductCard */}
-        <ProductCard />
-      </DashboardDiv>
-    </ItemContext.Provider>
+        {ProductCard}
+      </ProductListings>
+    </DashboardDiv>
+
   );
 }
 

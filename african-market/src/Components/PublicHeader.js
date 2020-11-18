@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
 const HeaderBar = styled.div`
   background-color: #393d3f;
   display: flex;
@@ -17,7 +19,7 @@ const Nav = styled.ul`
   justify-content: space-around;
   list-style-type: none;
 `;
-const Link = styled.li`
+const LinkItem = styled.li`
   color: white;
   cursor: pointer;
   weight: 400;
@@ -25,15 +27,21 @@ const Link = styled.li`
 `;
 function PublicHeader() {
   return (
-    <HeaderBar>
-      <SiteTitle>African Marketplace</SiteTitle>
-      <nav>
-        <Nav>
-          <Link>Home</Link>
-          <Link>Login</Link>
-        </Nav>
-      </nav>
-    </HeaderBar>
+    <Router>
+      <HeaderBar>
+        <SiteTitle>African Marketplace</SiteTitle>
+        <nav>
+          <Nav>
+            <LinkItem>
+              <Link to="/">Home</Link>
+            </LinkItem>
+            <LinkItem>
+              <Link to="/login">Login</Link>
+            </LinkItem>
+          </Nav>
+        </nav>
+      </HeaderBar>
+    </Router>
   );
 }
 

@@ -1,35 +1,29 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormFeedback,
-} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import styled from "styled-components";
 
+const LoginContainer = styled.div`
+  padding: 2rem;
+  border: darkgray 3px solid;
+  border-radius: 20px;
+  margin: 1rem auto;
+`;
 
 function Login(props) {
 
-// const initialState = {
-//     username: '',
-//     password: ''
-// }
-
-const [loginData, setLoginData] = useState({
-  username: '',
-  password: ''
-})
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: "",
+  });
 
   const onChange = (e) => {
     // console.log('login e.target: ', e.target.name);
     setLoginData({
-  ...loginData,
-[e.target.name]: e.target.value,
-      
-    })
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const onSubmit = async (e) => {
@@ -45,28 +39,35 @@ const [loginData, setLoginData] = useState({
     .catch((err) => {
       console.log(err);
     })
+
   };
 
   return (
-    <Form onSubmit={onSubmit}>
-      <FormGroup>
-        <Label for="username">Username</Label>
-        <Input type="text" id="username" name="username" onChange={onChange} value={loginData.username}/>
-        <FormFeedback invalid>
-          We do not have record of this email address on file.
-        </FormFeedback>
-      </FormGroup>
-      <FormGroup>
-        <Label for="password">Password</Label>
-        <Input type="password" id="password" name="password" onChange={onChange} value={loginData.password}/>
-        <FormFeedback invalid>
-          This password does not match what is on file.
-        </FormFeedback>
-      </FormGroup>
-      <Button 
-      
-      >Login</Button>
-    </Form>
+    <LoginContainer>
+      <Form onSubmit={onSubmit}>
+        <FormGroup>
+          <Label for="username">Username</Label>
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            onChange={onChange}
+            value={loginData.username}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            onChange={onChange}
+            value={loginData.password}
+          />
+        </FormGroup>
+        <Button>Login</Button>
+      </Form>
+    </LoginContainer>
   );
 }
 
