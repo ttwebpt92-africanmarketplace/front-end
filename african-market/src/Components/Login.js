@@ -11,11 +11,7 @@ const LoginContainer = styled.div`
   margin: 1rem auto;
 `;
 
-function Login() {
-  // const initialState = {
-  //     username: '',
-  //     password: ''
-  // }
+function Login(props) {
 
   const [loginData, setLoginData] = useState({
     username: "",
@@ -34,16 +30,16 @@ function Login() {
     e.preventDefault();
     console.log(loginData);
     axios
-      .post(
-        "https://african-marketplace-ttwebpt-92.herokuapp.com/api/login",
-        loginData
-      )
-      .then((res) => {
-        localStorage.setItem("token", res.data.token);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    .post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/login', loginData)
+    .then((res) => {
+      localStorage.setItem('token', res.data.token);
+      props.history.push('/dashboard')
+
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
   };
 
   return (

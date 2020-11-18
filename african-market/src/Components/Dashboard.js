@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import ItemContext from "../Contexts/ItemContext";
 import ProductCard from "./ProductCard";
 import styled from "styled-components";
 import AddProduct from "./AddProduct";
@@ -17,7 +18,9 @@ const ProductListings = styled.div`
 
 function Dashboard() {
   const username = "User";
+
   const [itemData, setItemData] = useState([]);
+
   const getData = () => {
     axiosWithAuth()
       .get("/api/items")
@@ -29,6 +32,7 @@ function Dashboard() {
         console.log(err);
       });
   };
+
   useEffect(() => {
     getData();
   }, []);
@@ -41,6 +45,7 @@ function Dashboard() {
         {ProductCard}
       </ProductListings>
     </DashboardDiv>
+
   );
 }
 
