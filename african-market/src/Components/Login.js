@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 
 
-function Login() {
+function Login(props) {
 
 // const initialState = {
 //     username: '',
@@ -38,7 +38,8 @@ const [loginData, setLoginData] = useState({
     axios
     .post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/login', loginData)
     .then((res) => {
-      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('token', res.data.token);
+      props.history.push('/dashboard')
 
     })
     .catch((err) => {
