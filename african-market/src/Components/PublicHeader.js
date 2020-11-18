@@ -27,7 +27,7 @@ const LinkItem = styled.li`
 `;
 function PublicHeader() {
   return (
-    <Router>
+    <Router forceRefresh={true}>
       <HeaderBar>
         <SiteTitle>African Marketplace</SiteTitle>
         <nav>

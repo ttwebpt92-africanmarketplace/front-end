@@ -10,30 +10,48 @@ const ProductCardDiv = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-content: right;
+  width: 80vw;
+  background-color: white;
+  border: black solid 3px;
+  border-radius: 20px;
 `;
-const ProdName = styled.h3``;
-const ProdCat = styled.p``;
-const ProdPrice = styled.p``;
-const ProdUser = styled.p``;
+const ProdName = styled.h3`
+  font-weight: 500;
+  color: black;
+`;
+const ProdCat = styled.p`
+  color: gray;
+`;
+const ProdPrice = styled.p`
+  color: darkgreen;
+`;
+const ProdUser = styled.p`
+  color: black;
+`;
 
 function ProductCard(props) {
 
   const products = useContext(ItemContext);
   //We can change the names of these props as needed. This is mostly placeholder so we can see the setup.
-console.log('Card product: ', products[0].itemName);
+console.log('Card product: ', products);
 
-  const { productName, productCategory, productPrice, user, location } = props;
+  // const { productName, productCategory, productPrice, user, location } = props;
   return (
-    <ProductCardDiv>
-      <ProdName>{productName}{products[0].itemName}</ProdName>
-      <ProdCat>{productCategory}</ProdCat>
-      <ProdPrice>{productPrice}</ProdPrice>
-      <ProdUser>
-        Uploaded by, {user} from {location}
-      </ProdUser>
-      {/* Optional Edit and Delete Buttons for Stretch */}
-      {/* <button>Edit</button><button>Delete</button> */}
-    </ProductCardDiv>
+    <div>
+{products.map((product) => (
+  <ProductCardDiv>
+  <ProdName>{product.itemName}</ProdName>
+  <ProdCat>{product.description}</ProdCat>
+  <ProdPrice>{product.itemPrice}</ProdPrice>
+  <ProdUser>
+    Uploaded by, {product.userId} from {product.itemName}
+  </ProdUser>
+  {/* Optional Edit and Delete Buttons for Stretch */}
+  {/* <button>Edit</button><button>Delete</button> */}
+</ProductCardDiv>
+))}
+</div>
+
   );
 }
 export default ProductCard;
