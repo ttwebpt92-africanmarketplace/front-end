@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-=======
 import "../App.css";
->>>>>>> a206d7ddc147611d7d4afdc9b7328b3bfef80efa
 
 const TopImg = styled.div`
   background-image: url("https://images.unsplash.com/photo-1591465001581-2c57a07a7a30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
@@ -78,13 +75,9 @@ function Home() {
     <div>
       <TopImg aria-label="bag of spices">
         <H2>Compare your prices to others in your area.</H2>
-<<<<<<< HEAD
-        <SignUp><Link to='/signup'>Sign Up</Link></SignUp>
-=======
         <SignUpTop as={Link} to="/signup">
           Sign Up
         </SignUpTop>
->>>>>>> a206d7ddc147611d7d4afdc9b7328b3bfef80efa
       </TopImg>
       <InfoDiv>
         <InfoCard>
@@ -134,13 +127,9 @@ function Home() {
           </p>
         </InfoCard>
       </InfoDiv>
-<<<<<<< HEAD
-      <SignUp><Link to='/signup'>Sign Up Today</Link></SignUp>
-=======
       <SignUpBottom as={Link} to="/signup">
         Sign Up Today
       </SignUpBottom>
->>>>>>> a206d7ddc147611d7d4afdc9b7328b3bfef80efa
     </div>
   );
 }

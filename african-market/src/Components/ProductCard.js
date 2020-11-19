@@ -32,30 +32,6 @@ const ProdPrice = styled.p`
 `;
 
 function ProductCard(props) {
-<<<<<<< HEAD
-
-  const products = useContext(ItemContext);
-  //We can change the names of these props as needed. This is mostly placeholder so we can see the setup.
-console.log('Card product: ', products);
-
-  // const { productName, productCategory, productPrice, user, location } = props;
-  return (
-    <div>
-{products.map((product) => (
-  <ProductCardDiv>
-  <ProdName>{product.itemName}</ProdName>
-  <ProdCat>{product.description}</ProdCat>
-  <ProdPrice>{product.itemPrice}</ProdPrice>
-  <ProdUser>
-    Uploaded by, {product.userId} from {product.itemName}
-  </ProdUser>
-  {/* Optional Edit and Delete Buttons for Stretch */}
-  {/* <button>Edit</button><button>Delete</button> */}
-</ProductCardDiv>
-))}
-</div>
-
-=======
   const products = useContext(ItemContext);
   //We can change the names of these props as needed. This is mostly placeholder so we can see the setup.
   console.log("Card product: ", products);
@@ -74,7 +50,6 @@ console.log('Card product: ', products);
         </ProductCardDiv>
       ))}
     </div>
->>>>>>> a7f7ac418925b76ba07945ed02dc5c074d426048
   );
 }
 export default ProductCard;
