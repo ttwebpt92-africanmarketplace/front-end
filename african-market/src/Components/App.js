@@ -14,11 +14,21 @@ function App() {
     <Router>
       <div className="App">
       <PublicHeader />
+<<<<<<< HEAD
+=======
+      <Router>
+        <Switch>
+>>>>>>> a206d7ddc147611d7d4afdc9b7328b3bfef80efa
         <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
+        <Route exact path="/login" component={Login} />
         <Route path="/signup" component={SignForm} />
         <Route path="/addproduct" component={AddProduct}/>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
+<<<<<<< HEAD
+=======
+        </Switch>
+      </Router>
+>>>>>>> a206d7ddc147611d7d4afdc9b7328b3bfef80efa
       <PublicFooter />
       </div>
     </Router>
