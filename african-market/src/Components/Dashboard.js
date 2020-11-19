@@ -30,7 +30,8 @@ const NewItemButton = styled.button`
 `;
 
 function Dashboard() {
-  const username = "User";
+  const username = localStorage.getItem('userID');
+  console.log('username from localStorage: ', username);
 
   const [itemData, setItemData] = useState([]);
 
@@ -46,12 +47,41 @@ function Dashboard() {
       });
   };
 
+  const getUserInfo = () => {
+const id = localStorage.getItem('userID')
+
+    axiosWithAuth()
+    .get(`/api/users/${id}`)
+    .then((res) => {
+      console.log('getUserInfo res: ', res)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   useEffect(() => {
+    getUserInfo();
     getData();
+    
   }, []);
+<<<<<<< HEAD
+
+
+  return (
+    <ItemContext.Provider value={itemData}>
+    <DashboardDiv>
+      <p>Welcome to your Dashboard {username}!</p>
+      {/* NewProductForm Component */}
+      {/* We'll need to .map the array of objects into the ProductCard */}
+      <ProductCard />
+    </DashboardDiv>
+  </ItemContext.Provider>
+=======
   //for the collapsable "Add Product" component:
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+>>>>>>> a7f7ac418925b76ba07945ed02dc5c074d426048
 
   return (
     <ItemContext.Provider value={itemData}>

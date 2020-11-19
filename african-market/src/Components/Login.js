@@ -35,7 +35,9 @@ function Login(props) {
     axios
     .post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/login', loginData)
     .then((res) => {
+      console.log('login res.data: ', res.data);
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userID', res.data.userId);
       props.history.push('/dashboard')
 
     })
