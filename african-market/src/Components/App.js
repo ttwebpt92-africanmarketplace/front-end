@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Home from "./Home";
 import Login from "./Login";
@@ -11,23 +11,25 @@ import AddProduct from "./AddProduct"
 
 function App() {
   return (
+
     
     
 <Router >
 
 <PublicHeader />
      
-<Switch>
+
    
-     <Route path="/login" component={withRouter(Login)} />
+     <Route path="/login" component={Login} />
      <Route path="/signup" component={SignForm} />
      <Route path="/addproduct" component={AddProduct}/>
      <PrivateRoute exact path="/dashboard" component={Dashboard} />
-     <Route exact path="/" component={withRouter(Home)}/>
-     </Switch>
+     <Route exact path="/" component={Home}/>
+  
    <PublicFooter />
 
 </Router>
+
 
   );
 }

@@ -5,10 +5,13 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import styled from "styled-components";
 
 const LoginContainer = styled.div`
-  padding: 2rem;
-  border: darkgray 3px solid;
-  border-radius: 20px;
-  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  background-color: #c6c6c6;
+  padding: 3.68%;
+  margin: 0 auto;
 `;
 
 function Login(props) {

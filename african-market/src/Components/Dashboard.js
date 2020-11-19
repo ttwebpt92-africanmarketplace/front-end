@@ -1,19 +1,32 @@
 //Visible to users only after they are logged in.
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import ItemContext from "../Contexts/ItemContext";
 import ProductCard from "./ProductCard";
-import styled from "styled-components";
 import AddProduct from "./AddProduct";
+import styled from "styled-components";
+import { Collapse } from "reactstrap";
 
 const DashboardDiv = styled.div`
-  background-color: gray;
+  margin: 0;
 `;
-const ProductListings = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
+const H3 = styled.h3`
+  text-align: center;
+  margin: 1rem auto;
+`;
+const NewItemButton = styled.button`
+  display: block;
+  margin: 0 auto;
+  background-color: #003300;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 10rem;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
 
 function Dashboard() {
@@ -52,6 +65,7 @@ const id = localStorage.getItem('userID')
     getData();
     
   }, []);
+<<<<<<< HEAD
 
 
   return (
@@ -63,7 +77,23 @@ const id = localStorage.getItem('userID')
       <ProductCard />
     </DashboardDiv>
   </ItemContext.Provider>
+=======
+  //for the collapsable "Add Product" component:
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+>>>>>>> a7f7ac418925b76ba07945ed02dc5c074d426048
 
+  return (
+    <ItemContext.Provider value={itemData}>
+      <DashboardDiv>
+        <H3>Welcome to your Dashboard {username}!</H3>
+        <NewItemButton onClick={toggle}>Add A New Listing</NewItemButton>
+        <Collapse isOpen={isOpen}>
+          <AddProduct />
+        </Collapse>
+        <ProductCard />
+      </DashboardDiv>
+    </ItemContext.Provider>
   );
 }
 
