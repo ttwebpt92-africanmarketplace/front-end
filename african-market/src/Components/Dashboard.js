@@ -17,7 +17,8 @@ const ProductListings = styled.div`
 `;
 
 function Dashboard() {
-  const username = "User";
+  const username = localStorage.getItem('userID');
+  console.log('username from localStorage: ', username);
 
   const [itemData, setItemData] = useState([]);
 
@@ -33,9 +34,26 @@ function Dashboard() {
       });
   };
 
+  const getUserInfo = () => {
+const id = localStorage.getItem('userID')
+
+    axiosWithAuth()
+    .get(`/api/users/${id}`)
+    .then((res) => {
+      console.log('getUserInfo res: ', res)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   useEffect(() => {
+    getUserInfo();
     getData();
+    
   }, []);
+
+
   return (
     <ItemContext.Provider value={itemData}>
     <DashboardDiv>
