@@ -26,40 +26,15 @@ const SignForm = () => {
     role: true,
   });
 
-	const [user, setUser] = useState({
-		username: '',
-		password: '',
-		email: '',
-		firstname: '',
-		lastname: '',
-		address: '',
-		role: true
-	});
+  const history = useHistory();
 
-	const history = useHistory();
-
-	const onChange = (e) => {
-		//console.log('user e.target: ', e.target.name,e.target.value);
-		setUser({
-	  ...user,
-	[e.target.name]: e.target.value,
-		  
-		})
-	  };
-
-	  const onSubmit = async (e) => {
-		e.preventDefault();
-		console.log(user);
-		axios
-		.post('https://african-marketplace-ttwebpt-92.herokuapp.com/api/register', user)
-		.then((res) => {
-		  console.log("post request: ",res);
-		  history.push('/login');
-		})
-		.catch((error) => {
-		  console.log("something went wrong: ", error);
-		})
-	  };
+  const onChange = (e) => {
+    //console.log('user e.target: ', e.target.name,e.target.value);
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +46,7 @@ const SignForm = () => {
       )
       .then((res) => {
         console.log("post request: ", res);
+        history.push("/login");
       })
       .catch((error) => {
         console.log("something went wrong: ", error);
