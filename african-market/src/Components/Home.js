@@ -78,13 +78,9 @@ function Home() {
     <div>
       <TopImg aria-label="bag of spices">
         <H2>Compare your prices to others in your area.</H2>
-<<<<<<< HEAD
-        <SignUp><Link to='/signup'>Sign Up</Link></SignUp>
-=======
         <SignUpTop as={Link} to="/signup">
           Sign Up
         </SignUpTop>
->>>>>>> a206d7ddc147611d7d4afdc9b7328b3bfef80efa
       </TopImg>
       <InfoDiv>
         <InfoCard>
@@ -134,13 +130,9 @@ function Home() {
           </p>
         </InfoCard>
       </InfoDiv>
-<<<<<<< HEAD
-      <SignUp><Link to='/signup'>Sign Up Today</Link></SignUp>
-=======
       <SignUpBottom as={Link} to="/signup">
         Sign Up Today
       </SignUpBottom>
->>>>>>> a206d7ddc147611d7d4afdc9b7328b3bfef80efa
     </div>
   );
 }
