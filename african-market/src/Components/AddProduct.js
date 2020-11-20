@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-=======
-import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
-import styled from "styled-components";
-import axios from "axios";
-
->>>>>>> 76be358cfbfd4d89917cba0b1bb1c31e9e713848
 const AddContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,6 +17,8 @@ const AddContainer = styled.div`
   }
 `;
 const AddComp = (props) => {
+
+  console.log('AddProduct props; ', props);
   const [newItem, setNewItem] = useState({
     itemName: "",
     itemPrice: "",
@@ -43,7 +37,7 @@ const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('newItem: ', newItem);
+    console.log('newItem: ', {newItem});
     axiosWithAuth()
       .post(
         "api/items",
@@ -57,7 +51,8 @@ const history = useHistory();
           description: "",
           categoryId: "",
         })
-        history.push('/dashboard')
+       props.setItemData([...props.itemData,
+        newItem])
       })
     
       .catch((error) => {
@@ -65,11 +60,8 @@ const history = useHistory();
       });
   };
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 76be358cfbfd4d89917cba0b1bb1c31e9e713848
   return (
     <>
       <Form onSubmit={onSubmit} >
@@ -134,15 +126,12 @@ const history = useHistory();
     </>
   );
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> 76be358cfbfd4d89917cba0b1bb1c31e9e713848
-const AddCompPage = () => {
+const AddCompPage = (props) => {
+  console.log('addcomppage props: ', props);
   return (
     <>
       <AddContainer>
-        <AddComp />
+        <AddComp itemData={props.itemData} setItemData={props.setItemData}/>
       </AddContainer>
     </>
   );
