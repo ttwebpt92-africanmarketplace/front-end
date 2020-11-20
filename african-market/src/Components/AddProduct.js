@@ -1,8 +1,17 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
+import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
+import styled from "styled-components";
+import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+=======
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 
+>>>>>>> 76be358cfbfd4d89917cba0b1bb1c31e9e713848
 const AddContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,15 +24,13 @@ const AddContainer = styled.div`
     width: 100%;
   }
 `;
-
-const AddComp = () => {
+const AddComp = (props) => {
   const [newItem, setNewItem] = useState({
-    title: "",
-    price: "",
+    itemName: "",
+    itemPrice: "",
     description: "",
     categoryId: "",
   });
-
   const onChange = (e) => {
     //console.log('user e.target: ', e.target.name,e.target.value);
     setNewItem({
@@ -32,39 +39,48 @@ const AddComp = () => {
     });
   };
 
-  const onSubmit = async (e) => {
+const history = useHistory();
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    console.log(newItem);
-    axios
+    console.log('newItem: ', newItem);
+    axiosWithAuth()
       .post(
-        "https://african-marketplace-ttwebpt-92.herokuapp.com/api/items",
+        "api/items",
         newItem
       )
       .then((res) => {
         console.log("post request: ", res);
         setNewItem({
-          title: "",
-          price: "",
+          itemName: "",
+          itemPrice: "",
           description: "",
           categoryId: "",
-        });
+        })
+        history.push('/dashboard')
       })
+    
       .catch((error) => {
         console.log("cannot add item: ", error);
       });
   };
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 76be358cfbfd4d89917cba0b1bb1c31e9e713848
   return (
     <>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} >
         <FormGroup>
-          <Label for="title">Title</Label>
+          <Label for="itemName">Title</Label>
           <Input
             type="text"
-            name="title"
-            id="title"
+            name="itemName"
+            id="itemName"
             placeholder="please enter product title"
-            value={newItem.title}
+            value={newItem.itemName}
             onChange={onChange}
             required
           />
@@ -90,13 +106,13 @@ const AddComp = () => {
           </CustomInput>
         </FormGroup>
         <FormGroup>
-          <Label for="price">Price $</Label>
+          <Label for="itemPrice">Price $</Label>
           <Input
             type="number"
-            name="price"
-            id="price"
+            name="itemPrice"
+            id="itemPrice"
             placeholder="price"
-            value={newItem.price}
+            value={newItem.itemPrice}
             onChange={onChange}
             required
           />
@@ -113,12 +129,15 @@ const AddComp = () => {
             required
           />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button forceRefresh={true}>Submit</Button>
       </Form>
     </>
   );
 };
+<<<<<<< HEAD
+=======
 
+>>>>>>> 76be358cfbfd4d89917cba0b1bb1c31e9e713848
 const AddCompPage = () => {
   return (
     <>
@@ -128,5 +147,4 @@ const AddCompPage = () => {
     </>
   );
 };
-
 export default AddCompPage;
