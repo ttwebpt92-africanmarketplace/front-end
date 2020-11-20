@@ -18,8 +18,6 @@ function App() {
 
 <PublicHeader />
      
-
-   
      <Route path="/login" component={Login} />
      <Route path="/signup" component={SignForm} />
      <Route path="/addproduct" component={AddProduct}/>

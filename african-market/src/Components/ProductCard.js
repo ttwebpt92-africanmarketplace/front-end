@@ -5,20 +5,22 @@ import styled from "styled-components";
 
 const ProductCardDiv = styled.div`
   display: flex;
-  margin: 2rem auto;
-  flex-direction: column;
-  justify-content: space-around;
-  align-content: right;
+  margin: 1.5rem auto;
+  flex-direction: row;
   width: 80vw;
-  background-color: lightGray;
+  background-color: #d6d6d6;
   border: black solid 3px;
   border-radius: 20px;
-  padding: 1rem;
 `;
+const TextDetailsDiv = styled.div`
+  margin-left: 0.5rem;
+`;
+
 const ProdName = styled.h4`
   text-align: left;
   font-weight: 500;
   color: black;
+  font-size: 1.3rem;
 `;
 const ProdCat = styled.p`
   color: gray;
@@ -30,6 +32,13 @@ const ProdPrice = styled.p`
   margin: 0;
   line-height: 0;
 `;
+const ProdImg = styled.img``;
+const ProdImgDiv = styled.div`
+  border: solid black;
+  margin: 0.5rem;
+  width: 25%;
+  border-radius: 20px;
+`;
 
 function ProductCard(props) {
   const products = useContext(ItemContext);
@@ -40,13 +49,18 @@ function ProductCard(props) {
     <div>
       {products.map((product) => (
         <ProductCardDiv>
-          <ProdName>{product.itemName}</ProdName>
-          <ProdCat>
-            <p>Details: {product.description}</p>
-          </ProdCat>
-          <ProdPrice>
-            <p>${product.itemPrice}</p>
-          </ProdPrice>
+          <ProdImgDiv>
+            <ProdImg src={product.url} alt={product.itemName} />
+          </ProdImgDiv>
+          <TextDetailsDiv>
+            <ProdName>{product.itemName}</ProdName>
+            <ProdCat>
+              <p>Details: {product.description}</p>
+            </ProdCat>
+            <ProdPrice>
+              <p>${product.itemPrice}</p>
+            </ProdPrice>
+          </TextDetailsDiv>
         </ProductCardDiv>
       ))}
     </div>
