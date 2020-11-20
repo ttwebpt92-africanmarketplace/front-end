@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
@@ -18,12 +17,7 @@ const AddContainer = styled.div`
 
 const AddComp = (props) => {
 
-  const history = useHistory();
-
-  const forceUpdateHaldler =  () => {
-    forceUpdate();
-  }
-
+  console.log('AddProduct props; ', props);
   const [newItem, setNewItem] = useState({
     itemName: "",
     itemPrice: "",
@@ -41,7 +35,7 @@ const AddComp = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('newItem: ', newItem);
+    console.log('newItem: ', {newItem});
     axiosWithAuth()
       .post(
         "api/items",
@@ -55,13 +49,16 @@ const AddComp = (props) => {
           description: "",
           categoryId: "",
         })
-        history.push('/dashboard')
+       props.setItemData([...props.itemData,
+        newItem])
       })
     
       .catch((error) => {
         console.log("cannot add item: ", error);
       });
   };
+
+
 
   return (
     <>
@@ -122,16 +119,17 @@ const AddComp = (props) => {
             required
           />
         </FormGroup>
-        <Button onClick={forceUpdateHaldler}>Submit</Button>
+        <Button>Submit</Button>
       </Form>
     </>
   );
 };
-const AddCompPage = () => {
+const AddCompPage = (props) => {
+  console.log('addcomppage props: ', props);
   return (
     <>
       <AddContainer>
-        <AddComp />
+        <AddComp itemData={props.itemData} setItemData={props.setItemData}/>
       </AddContainer>
     </>
   );
