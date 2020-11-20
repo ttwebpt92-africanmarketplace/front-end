@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import ItemContext from "../Contexts/ItemContext";
+import { Button } from "reactstrap";
 
 import styled from "styled-components";
 
@@ -46,6 +47,10 @@ function ProductCard(props) {
   //We can change the names of these props as needed. This is mostly placeholder so we can see the setup.
   console.log("Card product: ", products);
   // const { productName, productCategory, productPrice, user, location } = props;
+
+  const deleteHandler = (id) => {
+    props.deleteProduct(id);
+  }
   return (
     <div>
       {products.map((product) => (
@@ -62,6 +67,7 @@ function ProductCard(props) {
               <p>${product.itemPrice}</p>
             </ProdPrice>
           </TextDetailsDiv>
+          <Button onClick={() => deleteHandler(product.id)}>Delete</Button>
         </ProductCardDiv>
       ))}
     </div>

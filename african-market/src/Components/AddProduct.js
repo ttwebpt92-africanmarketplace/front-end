@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import styled from "styled-components";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 const AddContainer = styled.div`
   display: flex;
@@ -16,6 +14,7 @@ const AddContainer = styled.div`
     width: 100%;
   }
 `;
+
 const AddComp = (props) => {
 
   console.log('AddProduct props; ', props);
@@ -33,7 +32,6 @@ const AddComp = (props) => {
     });
   };
 
-const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -58,6 +56,10 @@ const history = useHistory();
       .catch((error) => {
         console.log("cannot add item: ", error);
       });
+
+      const deleteHandler = (id) => {
+        props.deleteProduct(id);
+      }
   };
 
 
@@ -121,7 +123,7 @@ const history = useHistory();
             required
           />
         </FormGroup>
-        <Button forceRefresh={true}>Submit</Button>
+        <Button>Submit</Button>
       </Form>
     </>
   );

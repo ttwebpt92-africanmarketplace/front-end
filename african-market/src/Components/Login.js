@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import styled from "styled-components";
 
@@ -12,6 +11,7 @@ const LoginContainer = styled.div`
   border-radius: 20px;
   margin: 1rem auto;
 `;
+
 
 function Login(props) {
 
@@ -41,7 +41,7 @@ function Login(props) {
 
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err)
     })
 
   };
