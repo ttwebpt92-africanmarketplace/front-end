@@ -1,11 +1,13 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Logout extends React.Component {
 
   logout = (e) => {
     e.preventDefault();
+    const { history } = this.props;
     localStorage.setItem('token', '');
-    this.props.history.push('/')
+    history.push('/')
   }
 
   render() {
@@ -15,4 +17,4 @@ class Logout extends React.Component {
   }
 }
 
-export default Logout;
+export default withRouter(Logout);

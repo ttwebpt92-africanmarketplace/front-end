@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
@@ -15,7 +16,7 @@ const AddContainer = styled.div`
     width: 100%;
   }
 `;
-const AddComp = () => {
+const AddComp = (props) => {
   const [newItem, setNewItem] = useState({
     itemName: "",
     itemPrice: "",
@@ -29,6 +30,9 @@ const AddComp = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+const history = useHistory();
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log('newItem: ', newItem);
@@ -39,20 +43,25 @@ const AddComp = () => {
       )
       .then((res) => {
         console.log("post request: ", res);
-        // setNewItem({
-        //   itemName: "",
-        //   itemPrice: "",
-        //   description: "",
-        //   categoryId: "",
-        // });
+        setNewItem({
+          itemName: "",
+          itemPrice: "",
+          description: "",
+          categoryId: "",
+        })
+        history.push('/dashboard')
       })
+    
       .catch((error) => {
         console.log("cannot add item: ", error);
       });
   };
+
+
+
   return (
     <>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} >
         <FormGroup>
           <Label for="itemName">Title</Label>
           <Input
@@ -109,7 +118,7 @@ const AddComp = () => {
             required
           />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button forceRefresh={true}>Submit</Button>
       </Form>
     </>
   );

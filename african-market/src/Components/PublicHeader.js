@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import Logout from './Logout';
 
 const HeaderBar = styled.div`
   background-color: #393d3f;
@@ -41,6 +42,10 @@ function PublicHeader() {
             <LinkItem as={Link} to="/login" class="headerLink">
               Login
             </LinkItem>
+            <LinkItem>
+            <Logout />
+            </LinkItem>
+            
           </Nav>
         </nav>
       </HeaderBar>
