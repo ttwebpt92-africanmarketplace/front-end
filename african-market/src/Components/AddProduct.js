@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import styled from "styled-components";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 const AddContainer = styled.div`
   display: flex;
@@ -16,7 +15,15 @@ const AddContainer = styled.div`
     width: 100%;
   }
 `;
+
 const AddComp = (props) => {
+
+  const history = useHistory();
+
+  const forceUpdateHaldler =  () => {
+    forceUpdate();
+  }
+
   const [newItem, setNewItem] = useState({
     itemName: "",
     itemPrice: "",
@@ -31,7 +38,6 @@ const AddComp = (props) => {
     });
   };
 
-const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -116,7 +122,7 @@ const history = useHistory();
             required
           />
         </FormGroup>
-        <Button forceRefresh={true}>Submit</Button>
+        <Button onClick={forceUpdateHaldler}>Submit</Button>
       </Form>
     </>
   );
