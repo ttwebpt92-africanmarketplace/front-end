@@ -69,15 +69,24 @@ const id = localStorage.getItem('userID')
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  const deleteProduct = (id) => {
+      const newProduct = [...itemData];
+      const deleteIndex = newProduct.findIndex((product) => product.id === id);
+      newProduct.splice(deleteIndex, 1);
+      setItemData(newProduct);
+
+    }
+  
+
   return (
     <ItemContext.Provider value={itemData}>
       <DashboardDiv>
         <H3>Welcome to your Dashboard {username}!</H3>
         <NewItemButton onClick={toggle}>Add A New Listing</NewItemButton>
         <Collapse isOpen={isOpen}>
-          <AddProduct itemData={itemData} setItemData={setItemData}/>
+          <AddProduct itemData={itemData} setItemData={setItemData} />
         </Collapse>
-        <ProductCard />
+        <ProductCard deleteProduct={deleteProduct}/>
       </DashboardDiv>
     </ItemContext.Provider>
   );

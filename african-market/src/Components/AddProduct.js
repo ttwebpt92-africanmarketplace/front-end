@@ -56,6 +56,10 @@ const AddComp = (props) => {
       .catch((error) => {
         console.log("cannot add item: ", error);
       });
+
+      const deleteHandler = (id) => {
+        props.deleteProduct(id);
+      }
   };
 
 
