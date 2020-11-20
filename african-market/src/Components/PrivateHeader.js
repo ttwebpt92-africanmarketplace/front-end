@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-
+import Logout from './Logout';
 
 const HeaderBar = styled.div`
   background-color: #393d3f;
@@ -29,7 +29,7 @@ const LinkItem = styled.li`
     color: white;
   }
 `;
-function PublicHeader() {
+function PrivateHeader() {
   return (
     <Router forceRefresh={true}>
       <HeaderBar>
@@ -42,7 +42,9 @@ function PublicHeader() {
             <LinkItem as={Link} to="/login" class="headerLink">
               Login
             </LinkItem>
-          
+            <LinkItem>
+            <Logout />
+            </LinkItem>
             
           </Nav>
         </nav>
@@ -51,4 +53,4 @@ function PublicHeader() {
   );
 }
 
-export default PublicHeader;
+export default PrivateHeader;
