@@ -75,7 +75,7 @@ const id = localStorage.getItem('userID')
         <H3>Welcome to your Dashboard {username}!</H3>
         <NewItemButton onClick={toggle}>Add A New Listing</NewItemButton>
         <Collapse isOpen={isOpen}>
-          <AddProduct />
+          <AddProduct itemData={itemData} setItemData={setItemData}/>
         </Collapse>
         <ProductCard />
       </DashboardDiv>
