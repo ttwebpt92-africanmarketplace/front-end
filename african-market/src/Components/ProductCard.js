@@ -33,7 +33,8 @@ const ProdPrice = styled.p`
   margin: 0;
   line-height: 0;
 `;
-const ProdImg = styled.img``;
+const ProdImg = styled.img`
+height: 100%; width: 100%; object-fit: contain; border-radius: 20px;`;
 const ProdImgDiv = styled.div`
   border: solid black;
   margin: 0.5rem;
@@ -55,7 +56,7 @@ function ProductCard(props) {
       {products.map((product) => (
         <ProductCardDiv>
           <ProdImgDiv>
-            <ProdImg src={product.url} alt={product.itemName} />
+            <ProdImg src={product.imageUrl} alt={product.itemName} />
           </ProdImgDiv>
           <TextDetailsDiv>
             <ProdName>{product.itemName}</ProdName>

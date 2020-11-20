@@ -3,6 +3,8 @@ import axios from "axios";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import styled from "styled-components";
 
+import PublicHeader from './PublicHeader';
+
 const LoginContainer = styled.div`
   padding: 2rem;
   border: darkgray 3px solid;
@@ -45,7 +47,11 @@ function Login(props) {
   };
 
   return (
-    <LoginContainer>
+    <div>
+      <div>
+        <PublicHeader />
+      </div>
+      <LoginContainer>
       <Form onSubmit={onSubmit}>
         <FormGroup>
           <Label for="username">Username</Label>
@@ -70,6 +76,8 @@ function Login(props) {
         <Button>Login</Button>
       </Form>
     </LoginContainer>
+    </div>
+
   );
 }
 

@@ -7,6 +7,8 @@ import AddProduct from "./AddProduct";
 import styled from "styled-components";
 import { Collapse } from "reactstrap";
 
+import PrivateHeader from './PrivateHeader';
+
 const DashboardDiv = styled.div`
   margin: 0;
 `;
@@ -79,7 +81,11 @@ const id = localStorage.getItem('userID')
   
 
   return (
-    <ItemContext.Provider value={itemData}>
+    <div>
+      <div>
+        <PrivateHeader />
+      </div>
+      <ItemContext.Provider value={itemData}>
       <DashboardDiv>
         <H3>Welcome to your Dashboard {username}!</H3>
         <NewItemButton onClick={toggle}>Add A New Listing</NewItemButton>
@@ -89,6 +95,8 @@ const id = localStorage.getItem('userID')
         <ProductCard deleteProduct={deleteProduct}/>
       </DashboardDiv>
     </ItemContext.Provider>
+    </div>
+
   );
 }
 
