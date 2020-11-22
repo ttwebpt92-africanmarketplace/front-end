@@ -3,6 +3,7 @@ import { Form, FormGroup, Label, Input,Button } from 'reactstrap'
 import styled from 'styled-components'
 import axios from "axios"
 import { useHistory } from 'react-router-dom';
+import PublicHeader from "./PublicHeader"
 
 
 const PageStyle = styled.div`
@@ -10,10 +11,12 @@ const PageStyle = styled.div`
   flex-direction: column;
   align-items: center;
   font-weight: bold;
+  text-align: center;
   background-color: #c6c6c6;
-  padding: 3.68%;
+  padding: 5.61%;
   margin: 0 auto;
 `;
+
 const SignForm = () => {
   const [user, setUser] = useState({
     username: "",
@@ -144,6 +147,7 @@ const SignForm = () => {
 const SignFormPage = () => {
   return (
     <>
+      <PublicHeader />
       <PageStyle>
         <SignForm />
       </PageStyle>
